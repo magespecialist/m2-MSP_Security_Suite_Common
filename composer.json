@@ -7,10 +7,6 @@
         "msp/common": "*",
         "magento/magento-composer-installer": "*"
     },
-    "conflict": {
-        "msp/securitysuitefull": "*",
-        "msp/securitysuite": "*"
-    },
     "suggest": {
         "msp/security-suite": "Full MageSpecialist Security Suite"
     },
