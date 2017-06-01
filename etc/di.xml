@@ -6,6 +6,7 @@
   <preference for="\MSP\SecuritySuiteCommon\Api\LogRepositoryInterface" type="\MSP\SecuritySuiteCommon\Model\LogRepository"/>
   <preference for="\MSP\SecuritySuiteCommon\Api\Data\LogSearchResultsInterface" type="\Magento\Framework\Api\SearchResults"/>
   <preference for="\MSP\SecuritySuiteCommon\Api\LogManagementInterface" type="\MSP\SecuritySuiteCommon\Model\LogManagement"/>
+  <preference for="\MSP\SecuritySuiteCommon\Api\UtilsInterface" type="\MSP\SecuritySuiteCommon\Model\Utils"/>
 
   <virtualType name="MspSecuritySuiteReportGridDataProvider"
                type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
