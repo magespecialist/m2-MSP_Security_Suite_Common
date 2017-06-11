@@ -43,8 +43,9 @@ class Stop extends Template
      * Return stop reason
      * @return string
      */
-    public function getReason()
+    public function getReasonHtml()
     {
-        return $this->registry->registry('msp_security_suite_reason');
+        $reason = $this->registry->registry('msp_security_suite_reason');
+        return $this->escapeHtml($reason);
     }
 }
