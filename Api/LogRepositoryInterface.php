@@ -57,4 +57,11 @@ interface LogRepositoryInterface
      * @return \MSP\SecuritySuiteCommon\Api\Data\LogSearchResultsInterface
      */
     public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
+
+    /**
+     * Clean old entries
+     * @param int $days
+     * @return void
+     */
+    public function cleanOldEntries($days);
 }

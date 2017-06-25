@@ -85,5 +85,19 @@ class Log extends AbstractDb
 
         $object->setCount(1);
         return parent::save($object);
-     }
+    }
+
+    /**
+     * Clean old entries
+     * @param int $days
+     */
+    public function cleanOldEntries($days)
+    {
+        $ts = $this->dateTime->date('Y-m-d H:i:s', $this->dateTime->timestamp() - $days * 86400);
+
+        $connection = $this->getConnection();
+        $tableName = $connection->getTableName($this->getMainTable());
+
+        $connection->delete($tableName, LogInterface::DATETIME . ' < ' . $connection->quote($ts));
+    }
 }

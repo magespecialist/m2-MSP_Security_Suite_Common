@@ -18,26 +18,26 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-namespace MSP\SecuritySuiteCommon\Api;
+namespace MSP\SecuritySuiteCommon\Cron;
 
-interface LogManagementInterface
+use MSP\SecuritySuiteCommon\Api\LogManagementInterface;
+
+class Clean
 {
-    const EVENT_ACTIVITY = 'msp_securitysuite_activity_detected';
-
     /**
-     * Log a security suite event
-     * @param string $moduleName
-     * @param string $message
-     * @param string $action
-     * @param string $additional = null
-     * @param string $user = null
-     * @return void
+     * @var LogManagementInterface
      */
-    public function logEvent($moduleName, $message, $action, $additional = null, $user = null);
+    private $logManagement;
 
-    /**
-     * Clean old events
-     * @return void
-     */
-    public function clean();
+    public function __construct(
+        LogManagementInterface $logManagement
+    ) {
+        $this->logManagement = $logManagement;
+    }
+
+    public function execute()
+    {
+        $this->logManagement->clean();
+        return $this;
+    }
 }

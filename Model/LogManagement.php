@@ -20,6 +20,7 @@
 
 namespace MSP\SecuritySuiteCommon\Model;
 
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Stdlib\DateTime\DateTime;
 use MSP\SecuritySuiteCommon\Api\Data\LogInterfaceFactory;
@@ -29,6 +30,8 @@ use MSP\SecuritySuiteCommon\Api\LogRepositoryInterface;
 
 class LogManagement implements LogManagementInterface
 {
+    const XML_PATH_LOGGING_PERSISTENCE = 'msp_securitysuite/logging/days_peristence';
+
     /**
      * @var LogInterfaceFactory
      */
@@ -54,11 +57,17 @@ class LogManagement implements LogManagementInterface
      */
     private $logRepository;
 
+    /**
+     * @var ScopeConfigInterface
+     */
+    private $scopeConfig;
+
     public function __construct(
         LogInterfaceFactory $logInterfaceFactory,
         DateTime $dateTime,
         RequestInterface $request,
         RemoteAddress $remoteAddress,
+        ScopeConfigInterface $scopeConfig,
         LogRepositoryInterface $logRepository
     ) {
         $this->logInterfaceFactory = $logInterfaceFactory;
@@ -66,6 +75,7 @@ class LogManagement implements LogManagementInterface
         $this->dateTime = $dateTime;
         $this->remoteAddress = $remoteAddress;
         $this->logRepository = $logRepository;
+        $this->scopeConfig = $scopeConfig;
     }
 
     /**
@@ -97,5 +107,15 @@ class LogManagement implements LogManagementInterface
         $log->setUser($user);
 
         $this->logRepository->save($log);
+    }
+
+    /**
+     * Clean old events
+     * @return void
+     */
+    public function clean()
+    {
+        $days = max(1, intval($this->scopeConfig->getValue(static::XML_PATH_LOGGING_PERSISTENCE)));
+        $this->logRepository->cleanOldEntries($days);
     }
 }

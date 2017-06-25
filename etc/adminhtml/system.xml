@@ -27,6 +27,14 @@
             <label>Security Suite</label>
             <tab>msp_common</tab>
             <resource>MSP_SecuritySuite::config</resource>
+
+            <group id="logging" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Events logging</label>
+                <field id="days_peristence" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Log persistence</label>
+                    <comment>In days (make sure Magento cron is configured)</comment>
+                </field>
+            </group>
         </section>
     </system>
 </config>

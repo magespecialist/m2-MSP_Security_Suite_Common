@@ -161,4 +161,14 @@ class LogRepository implements \MSP\SecuritySuiteCommon\Api\LogRepositoryInterfa
         $collection->setCurPage($searchCriteria->getCurrentPage());
         $collection->setPageSize($searchCriteria->getPageSize());
     }
+
+    /**
+     * Clean old entries
+     * @param int $days
+     * @return void
+     */
+    public function cleanOldEntries($days)
+    {
+        $this->objectResource->cleanOldEntries($days);
+    }
 }
