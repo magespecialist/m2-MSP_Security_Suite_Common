@@ -2,50 +2,59 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
-  <preference for="\MSP\SecuritySuiteCommon\Api\Data\LogInterface" type="\MSP\SecuritySuiteCommon\Model\Log"/>
-  <preference for="\MSP\SecuritySuiteCommon\Api\LogRepositoryInterface" type="\MSP\SecuritySuiteCommon\Model\LogRepository"/>
-  <preference for="\MSP\SecuritySuiteCommon\Api\Data\LogSearchResultsInterface" type="\Magento\Framework\Api\SearchResults"/>
-  <preference for="\MSP\SecuritySuiteCommon\Api\LogManagementInterface" type="\MSP\SecuritySuiteCommon\Model\LogManagement"/>
-  <preference for="\MSP\SecuritySuiteCommon\Api\UtilsInterface" type="\MSP\SecuritySuiteCommon\Model\Utils"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\Data\LogInterface" type="\MSP\SecuritySuiteCommon\Model\Log"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\LogRepositoryInterface"
+                type="\MSP\SecuritySuiteCommon\Model\LogRepository"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\Data\LogSearchResultsInterface"
+                type="\Magento\Framework\Api\SearchResults"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\LogManagementInterface"
+                type="\MSP\SecuritySuiteCommon\Model\LogManagement"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\UtilsInterface" type="\MSP\SecuritySuiteCommon\Model\Utils"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\SessionInterface" type="\MSP\SecuritySuiteCommon\Model\Session"/>
 
-  <virtualType name="MspSecuritySuiteReportGridDataProvider"
-               type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
-    <arguments>
-      <argument name="collection" xsi:type="object"
-                shared="false">MSP\SecuritySuiteCommon\Model\ResourceModel\Log\Collection</argument>
-      <argument name="filterPool" xsi:type="object"
-                shared="false">MspSecuritySuiteReportItemIdFilterPool</argument>
-    </arguments>
-  </virtualType>
+    <virtualType name="MspSecuritySuiteReportGridDataProvider"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object"
+                      shared="false">MSP\SecuritySuiteCommon\Model\ResourceModel\Log\Collection
+            </argument>
+            <argument name="filterPool" xsi:type="object"
+                      shared="false">MspSecuritySuiteReportItemIdFilterPool
+            </argument>
+        </arguments>
+    </virtualType>
 
-  <virtualType name="MspSecuritySuiteReportItemIdFilterPool"
-               type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
-    <arguments>
-      <argument name="appliers" xsi:type="array">
-        <item name="regular"
-              xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
-        <item name="fulltext"
-              xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
-      </argument>
-    </arguments>
-  </virtualType>
+    <virtualType name="MspSecuritySuiteReportItemIdFilterPool"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular"
+                      xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter
+                </item>
+                <item name="fulltext"
+                      xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter
+                </item>
+            </argument>
+        </arguments>
+    </virtualType>
 
-  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
-    <arguments>
-      <argument name="collections" xsi:type="array">
-        <item name="msp_security_suite_report_data_source"
-              xsi:type="string">MSP\SecuritySuiteCommon\Model\ResourceModel\Grid\Log\Collection</item>
-      </argument>
-    </arguments>
-  </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="msp_security_suite_report_data_source"
+                      xsi:type="string">MSP\SecuritySuiteCommon\Model\ResourceModel\Grid\Log\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
 
-  <virtualType name="MSP\SecuritySuiteCommon\Model\ResourceModel\Grid\Log\Collection"
-               type="MSP\SecuritySuiteCommon\Ui\Component\DataProvider\SearchResult\Report">
-    <arguments>
-      <argument name="mainTable" xsi:type="string">msp_securitysuite_log</argument>
-      <argument name="resourceModel"
-                xsi:type="string">MSP\SecuritySuiteCommon\Model\ResourceModel\Log\Collection</argument>
-    </arguments>
-  </virtualType>
-
+    <virtualType name="MSP\SecuritySuiteCommon\Model\ResourceModel\Grid\Log\Collection"
+                 type="MSP\SecuritySuiteCommon\Ui\Component\DataProvider\SearchResult\Report">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">msp_securitysuite_log</argument>
+            <argument name="resourceModel"
+                      xsi:type="string">MSP\SecuritySuiteCommon\Model\ResourceModel\Log\Collection
+            </argument>
+        </arguments>
+    </virtualType>
 </config>

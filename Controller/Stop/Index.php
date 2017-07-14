@@ -24,6 +24,7 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
+use MSP\SecuritySuiteCommon\Api\SessionInterface;
 
 class Index extends Action
 {
@@ -37,7 +38,13 @@ class Index extends Action
      */
     private $registry;
 
+    /**
+     * @var SessionInterface
+     */
+    private $session;
+
     public function __construct(
+        SessionInterface $session,
         PageFactory $pageFactory,
         Registry $registry,
         Context $context
@@ -45,14 +52,15 @@ class Index extends Action
         parent::__construct($context);
         $this->pageFactory = $pageFactory;
         $this->registry = $registry;
+        $this->session = $session;
     }
 
     public function execute()
     {
-        $reason = $this->getRequest()->getParam('reason');
+        $reason = $this->session->getEmergencyStopMessage();
 
         if (!$reason) {
-            return $this->_redirect('noroute');
+            return $this->_forward('defaultNoRoute');
         }
 
         $this->getResponse()->setHttpResponseCode(403);
