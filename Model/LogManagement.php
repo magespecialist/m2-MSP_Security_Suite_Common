@@ -30,8 +30,6 @@ use MSP\SecuritySuiteCommon\Api\LogRepositoryInterface;
 
 class LogManagement implements LogManagementInterface
 {
-    const XML_PATH_LOGGING_PERSISTENCE = 'msp_securitysuite/logging/days_peristence';
-
     /**
      * @var LogInterfaceFactory
      */
@@ -115,7 +113,9 @@ class LogManagement implements LogManagementInterface
      */
     public function clean()
     {
-        $days = max(1, intval($this->scopeConfig->getValue(static::XML_PATH_LOGGING_PERSISTENCE)));
+        $days = max(1, intval($this->scopeConfig->getValue(
+            LogManagementInterface::XML_PATH_LOGGING_PERSISTENCE
+        )));
         $this->logRepository->cleanOldEntries($days);
     }
 }

@@ -21,16 +21,21 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+
     <system>
-        <section id="msp_securitysuite" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+        <tab id="msp_securitysuite" translate="label" sortOrder="200">
+            <label><![CDATA[<span class="msp-security-suite-logo-config"></span><span>Security Suite</span>]]></label>
+        </tab>
+
+        <section id="msp_securitysuite_general" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>Security Suite</label>
-            <tab>msp_common</tab>
+            <label>General config</label>
+            <tab>msp_securitysuite</tab>
             <resource>MSP_SecuritySuite::config</resource>
 
             <group id="logging" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Events logging</label>
-                <field id="days_peristence" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field canRestore="1" id="days_peristence" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Log persistence</label>
                     <comment>In days (make sure Magento cron is configured)</comment>
                 </field>

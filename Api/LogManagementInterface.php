@@ -23,6 +23,7 @@ namespace MSP\SecuritySuiteCommon\Api;
 interface LogManagementInterface
 {
     const EVENT_ACTIVITY = 'msp_securitysuite_activity_detected';
+    const XML_PATH_LOGGING_PERSISTENCE = 'msp_securitysuite_general/logging/days_peristence';
 
     /**
      * Log a security suite event

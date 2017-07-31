@@ -1,0 +1,39 @@
+/**
+ * MageSpecialist
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to info@magespecialist.it so we can send you a copy immediately.
+ *
+ * @category   MSP
+ * @package    MSP_SecuritySuiteCommon
+ * @copyright  Copyright (c) 2017 Skeeller srl (http://www.magespecialist.it)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+.msp_securitysuite-comment {
+    padding-left: 60px;
+    background: url(../logo.png) left center no-repeat;
+    min-height: 48px;
+}
+
+.msp-security-suite-logo-config {
+    background-image: url('data:image/png;base64,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');
+    background-repeat: no-repeat;
+    display: inline-block;
+    background-size: auto 32px;
+    padding-left:55px;
+    height: 32px;
+    margin-top: -8px;
+    position: absolute;
+}
+
+.msp-security-suite-logo-config + span {
+    padding-left: 48px;
+}
