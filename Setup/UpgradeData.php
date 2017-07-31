@@ -42,6 +42,7 @@ class UpgradeData implements UpgradeDataInterface
     protected function upgradeTo010200(ModuleDataSetupInterface $setup)
     {
         $this->configMigration->doConfigMigration(
+            $setup,
             'msp_securitysuite/logging',
             'msp_securitysuite_general/logging'
         );
