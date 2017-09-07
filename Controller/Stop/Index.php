@@ -63,7 +63,7 @@ class Index extends Action
             return $this->_forward('defaultNoRoute');
         }
 
-        $this->getResponse()->setHttpResponseCode(403);
+        $this->getResponse()->setHttpResponseCode(500);
         $this->registry->register('msp_security_suite_reason', $reason);
         return $this->pageFactory->create();
     }

@@ -11,6 +11,7 @@
                 type="\MSP\SecuritySuiteCommon\Model\LogManagement"/>
     <preference for="\MSP\SecuritySuiteCommon\Api\UtilsInterface" type="\MSP\SecuritySuiteCommon\Model\Utils"/>
     <preference for="\MSP\SecuritySuiteCommon\Api\SessionInterface" type="\MSP\SecuritySuiteCommon\Model\Session"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\LockDownInterface" type="\MSP\SecuritySuiteCommon\Model\LockDown"/>
 
     <virtualType name="MspSecuritySuiteReportGridDataProvider"
                  type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">

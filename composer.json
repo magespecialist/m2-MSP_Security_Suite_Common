@@ -2,7 +2,7 @@
     "name": "msp/security-suite-common",
     "description": "Magento2 Security Suite by MageSpecialist Common Libraries",
     "require": {
-        "php": "~7.0.0",
+        "php": "^7.0|^7.1",
         "msp/common": "*",
         "magento/magento-composer-installer": "*"
     },

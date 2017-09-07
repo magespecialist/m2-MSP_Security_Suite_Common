@@ -57,7 +57,7 @@ class Utils implements UtilsInterface
 
         $uri = filter_var($uri, FILTER_SANITIZE_URL);
         $uri = preg_replace('|/+|', '/', $uri);
-        $uri = preg_replace('|^/index\.php|', '', $uri);
+        $uri = preg_replace('|^/.+?\.php|', '', $uri);
 
         return $uri;
     }
