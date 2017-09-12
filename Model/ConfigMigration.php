@@ -60,7 +60,7 @@ class ConfigMigration
             }
         } else {
             $connection = $setup->getConnection();
-            $configData = $connection->getTableName('core_config_data');
+            $configData = $setup->getTable('core_config_data');
             $connection->update($configData, ['path' => $dstPath], 'path='.$connection->quote($srcPath));
         }
     }
