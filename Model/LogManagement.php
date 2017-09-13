@@ -101,7 +101,7 @@ class LogManagement implements LogManagementInterface
         $log->setMessage($message);
         $log->setModule($moduleName);
         $log->setAction($action);
-        $log->setAdditional($additional);
+        $log->setAdditional(serialize($additional));
         $log->setUser($user);
 
         $this->logRepository->save($log);

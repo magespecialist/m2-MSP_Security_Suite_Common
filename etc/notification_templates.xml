@@ -20,12 +20,10 @@
   */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+        xsi:noNamespaceSchemaLocation="urn:magento:module:MSP_Notify:etc/notification_templates.xsd">
 
-    <module name="MSP_SecuritySuiteCommon" setup_version="1.4.1">
-        <sequence>
-            <module name="MSP_Common"/>
-            <module name="MSP_Notify"/>
-        </sequence>
-    </module>
+    <templates>
+        <template id="msp_securitysuite_activity_detected" label="MSP Security Suite Alert"
+                  file="MSP_SecuritySuiteCommon::security_suite.phtml" module="MSP_SecuritySuiteCommon" />
+    </templates>
 </config>
