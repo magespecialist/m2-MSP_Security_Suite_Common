@@ -71,8 +71,7 @@ class LockDown implements LockDownInterface
     }
 
     /**
-     * Return true if stealth mode is enabled
-     * @return bool
+     * @inheritdoc
      */
     public function getStealthMode()
     {
@@ -80,9 +79,7 @@ class LockDown implements LockDownInterface
     }
 
     /**
-     * Return an HTTP lockdown
-     * @param Phrase $message
-     * @return Http
+     * @inheritdoc
      */
     public function doHttpLockdown(Phrase $message)
     {
@@ -101,10 +98,7 @@ class LockDown implements LockDownInterface
     }
 
     /**
-     * Inject lockdown into action
-     * @param Action $action
-     * @param Phrase $message
-     * @return mixed
+     * @inheritdoc
      */
     public function doActionLockdown(Action $action, Phrase $message)
     {

@@ -23,9 +23,6 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
         <msp_securitysuite_general>
-            <logging>
-                <days_peristence>60</days_peristence>
-            </logging>
             <lockdown>
                 <stealth>1</stealth>
             </lockdown>

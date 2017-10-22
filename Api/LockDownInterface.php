@@ -20,10 +20,6 @@
 
 namespace MSP\SecuritySuiteCommon\Api;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Response\Http;
-use Magento\Framework\Phrase;
-
 interface LockDownInterface
 {
     const XML_PATH_LOCKDOWN_MODE = 'msp_securitysuite_general/lockdown/stealth';
@@ -40,16 +36,16 @@ interface LockDownInterface
 
     /**
      * Return an HTTP for lockdown
-     * @param Phrase $message
-     * @return Http
+     * @param \Magento\Framework\Phrase $message
+     * @return \Magento\Framework\App\Response\Http
      */
-    public function doHttpLockdown(Phrase $message);
+    public function doHttpLockdown(\Magento\Framework\Phrase $message);
 
     /**
      * Inject lockdown into action
-     * @param Action $action
-     * @param Phrase $message
-     * @return mixed
+     * @param \Magento\Framework\App\Action\Action $action
+     * @param \Magento\Framework\Phrase $message
+     * @return \MSP\SecuritySuiteCommon\Api\LockDownInterface
      */
-    public function doActionLockdown(Action $action, Phrase $message);
+    public function doActionLockdown(\Magento\Framework\App\Action\Action $action, \Magento\Framework\Phrase $message);
 }

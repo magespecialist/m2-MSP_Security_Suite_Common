@@ -24,7 +24,7 @@ interface SessionInterface
 {
     /**
      * Set emergency stop message
-     * @param $message
+     * @param string $message
      */
     public function setEmergencyStopMessage($message);
 

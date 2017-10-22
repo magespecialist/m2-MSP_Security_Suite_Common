@@ -60,7 +60,8 @@ class Index extends Action
         $reason = $this->session->getEmergencyStopMessage();
 
         if (!$reason) {
-            return $this->_forward('defaultNoRoute');
+            $this->_forward('defaultNoRoute');
+            return null;
         }
 
         $this->getResponse()->setHttpResponseCode(500);
