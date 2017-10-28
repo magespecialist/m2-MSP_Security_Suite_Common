@@ -10,6 +10,9 @@
     "msp/notify": "Event based notify system",
     "msp/security-suite-logger": "Security Suite Logging system"
   },
+  "conflict": {
+    "msp/userlockout": "*"
+  },
   "authors": [
     {
       "name": "Riccardo Tempesta",
