@@ -28,9 +28,11 @@
     </head>
 
     <body>
-        <referenceContainer name="root">
-            <block class="MSP\SecuritySuiteCommon\Block\Stop" name="content"
+        <referenceContainer name="root" remove="true" />
+
+        <container name="msp_security_suite">
+            <block class="MSP\SecuritySuiteCommon\Block\Stop" name="main.content"
                    template="MSP_SecuritySuiteCommon::stop.phtml" />
-        </referenceContainer>
+        </container>
     </body>
 </page>

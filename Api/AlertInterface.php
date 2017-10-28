@@ -18,12 +18,29 @@
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
-/** @var $block \MSP\SecuritySuiteCommon\Block\Stop */
-?>
+namespace MSP\SecuritySuiteCommon\Api;
 
-<img src="<?php echo $this->getViewFileUrl('MSP_SecuritySuiteCommon::stop.png') ?>" />
+interface AlertInterface
+{
+    const EVENT_PREFIX = 'msp_securitysuite';
 
-<div class="detected">
-    <h1><?php echo __('Your request has been blocked') ?></h1>
-    <h2><?php echo __($block->getReasonHtml()) ?></h2>
-</div>
+    const LEVEL_INFO = 'info';
+    const LEVEL_WARNING = 'warn';
+    const LEVEL_ERROR = 'error';
+    const LEVEL_SECURITY_ALERT = 'security_alert';
+
+    const ACTION_LOG = 'log';
+    const ACTION_LOCKDOWN = 'lockdown';
+
+    /**
+     * Trigger a security suite event
+     * @param string $module
+     * @param string $message
+     * @param string $level
+     * @param string $username
+     * @param string $action
+     * @param array|string $payload
+     * @return boolean
+     */
+    public function event($module, $message, $level = null, $username = null, $action = null, $payload = null);
+}

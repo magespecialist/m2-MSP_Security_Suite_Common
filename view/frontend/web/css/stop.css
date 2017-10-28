@@ -28,6 +28,7 @@ body {
     text-align: center;
     color: #ffffff;
     padding: 2em;
+    height: auto !important;
 }
 
 img {

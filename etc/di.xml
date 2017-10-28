@@ -4,4 +4,5 @@
 
     <preference for="\MSP\SecuritySuiteCommon\Api\SessionInterface" type="\MSP\SecuritySuiteCommon\Model\Session"/>
     <preference for="\MSP\SecuritySuiteCommon\Api\LockDownInterface" type="\MSP\SecuritySuiteCommon\Model\LockDown"/>
+    <preference for="\MSP\SecuritySuiteCommon\Api\AlertInterface" type="\MSP\SecuritySuiteCommon\Model\Alert"/>
 </config>
