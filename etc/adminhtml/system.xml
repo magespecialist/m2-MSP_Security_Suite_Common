@@ -24,7 +24,7 @@
 
     <system>
         <tab id="msp_securitysuite" translate="label" sortOrder="200">
-            <label><![CDATA[<span class="msp-security-suite-logo-config"></span><span>Security Suite</span>]]></label>
+            <label>Security Suite</label>
         </tab>
 
         <section id="msp_securitysuite_general" translate="label" type="text" sortOrder="0" showInDefault="1"
