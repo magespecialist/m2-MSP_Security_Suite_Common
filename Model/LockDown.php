@@ -28,6 +28,7 @@ use MSP\SecuritySuiteCommon\Api\LockDownInterface;
 use Magento\Framework\App\Response\Http;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\Phrase;
+use MSP\SecuritySuiteCommon\Api\SessionInterface;
 
 class LockDown implements LockDownInterface
 {
@@ -88,8 +89,10 @@ class LockDown implements LockDownInterface
             $this->http->setBody(LockDownInterface::HTTP_LOCKDOWN_BODY);
         } else {
             // Must use object manager because a session cannot be activated before setting area
-            $this->objectManager->get('MSP\SecuritySuiteCommon\Api\SessionInterface')
+            // @codingStandardsIgnoreStart
+            $this->objectManager->get(SessionInterface::class)
                 ->setEmergencyStopMessage($message);
+            // @codingStandardsIgnoreEnd
 
             $this->http->setRedirect($this->url->getUrl(LockDownInterface::HTTP_LOCKDOWN_PATH));
         }
@@ -108,8 +111,11 @@ class LockDown implements LockDownInterface
             $action->getResponse()->setHttpResponseCode(LockDownInterface::HTTP_LOCKDOWN_CODE);
             $action->getResponse()->setBody(LockDownInterface::HTTP_LOCKDOWN_BODY);
         } else {
-            $this->objectManager->get('MSP\SecuritySuiteCommon\Api\SessionInterface')
+            // Must use object manager because a session cannot be activated before setting area
+            // @codingStandardsIgnoreStart
+            $this->objectManager->get(SessionInterface::class)
                 ->setEmergencyStopMessage($message);
+            // @codingStandardsIgnoreEnd
 
             $url = $this->url->getUrl(LockDownInterface::HTTP_LOCKDOWN_PATH);
             $action->getResponse()->setRedirect($url);
