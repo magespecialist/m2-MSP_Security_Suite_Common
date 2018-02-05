@@ -32,6 +32,12 @@ interface AlertInterface
     const ACTION_LOG = 'log';
     const ACTION_LOCKDOWN = 'lockdown';
 
+    const ALERT_PARAM_LEVEL = 'level';
+    const ALERT_PARAM_MODULE = 'module';
+    const ALERT_PARAM_MESSAGE = 'message';
+    const ALERT_PARAM_USERNAME = 'username';
+    const ALERT_PARAM_PAYLOAD = 'payload';
+
     /**
      * Trigger a security suite event
      * @param string $module

@@ -53,11 +53,11 @@ class Alert implements AlertInterface
         }
 
         $params = [
-            'level' => $level,
-            'module' => $module,
-            'message' => $message,
-            'username' => $username,
-            'payload' => $payload,
+            AlertInterface::ALERT_PARAM_LEVEL => $level,
+            AlertInterface::ALERT_PARAM_MODULE => $module,
+            AlertInterface::ALERT_PARAM_MESSAGE => $message,
+            AlertInterface::ALERT_PARAM_USERNAME => $username,
+            AlertInterface::ALERT_PARAM_PAYLOAD => $payload,
         ];
 
         $genericEvent = AlertInterface::EVENT_PREFIX . '_event';
