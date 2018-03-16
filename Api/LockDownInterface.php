@@ -22,15 +22,13 @@ namespace MSP\SecuritySuiteCommon\Api;
 
 interface LockDownInterface
 {
-    const XML_PATH_LOCKDOWN_MODE = 'msp_securitysuite_general/lockdown/stealth';
-
     const HTTP_LOCKDOWN_CODE = 500;
-    const HTTP_LOCKDOWN_BODY = '<h1>500 Internal Server Error</h1>';
-    const HTTP_LOCKDOWN_PATH = 'msp_security_suite/stop/index';
+    const HTTP_LOCKDOWN_BODY = '<h1>500 Internal Server Error - Security Exception</h1>';
 
     /**
      * Return true if stealth mode is enabled
      * @return bool
+     * @deprecated
      */
     public function getStealthMode();
 

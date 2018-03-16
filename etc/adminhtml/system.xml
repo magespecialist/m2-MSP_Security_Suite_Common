@@ -33,17 +33,6 @@
             <label>General config</label>
             <tab>msp_securitysuite</tab>
             <resource>MSP_SecuritySuite::config</resource>
-
-            <group id="lockdown" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1"
-                   showInStore="1">
-                <label>Lockdown</label>
-                <field canRestore="1" id="stealth" translate="label comment" type="select" sortOrder="10"
-                       showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Stealth mode</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment>Display a 500 error page instead of Emergency LockDown page</comment>
-                </field>
-            </group>
         </section>
     </system>
 </config>

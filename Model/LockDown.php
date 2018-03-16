@@ -28,7 +28,6 @@ use MSP\SecuritySuiteCommon\Api\LockDownInterface;
 use Magento\Framework\App\Response\Http;
 use Magento\Framework\UrlInterface;
 use Magento\Framework\Phrase;
-use MSP\SecuritySuiteCommon\Api\SessionInterface;
 
 class LockDown implements LockDownInterface
 {
@@ -57,6 +56,14 @@ class LockDown implements LockDownInterface
      */
     private $actionFlag;
 
+    /**
+     * LockDown constructor.
+     * @param ScopeConfigInterface $scopeConfig
+     * @param ObjectManagerInterface $objectManager
+     * @param ActionFlag $actionFlag
+     * @param UrlInterface $url
+     * @param Http $http
+     */
     public function __construct(
         ScopeConfigInterface $scopeConfig,
         ObjectManagerInterface $objectManager,
@@ -73,10 +80,11 @@ class LockDown implements LockDownInterface
 
     /**
      * @inheritdoc
+     * @deprecated
      */
     public function getStealthMode()
     {
-        return !!$this->scopeConfig->getValue(LockDownInterface::XML_PATH_LOCKDOWN_MODE);
+        return false;
     }
 
     /**
@@ -84,18 +92,8 @@ class LockDown implements LockDownInterface
      */
     public function doHttpLockdown(Phrase $message)
     {
-        if ($this->getStealthMode()) {
-            $this->http->setStatusCode(LockDownInterface::HTTP_LOCKDOWN_CODE);
-            $this->http->setBody(LockDownInterface::HTTP_LOCKDOWN_BODY);
-        } else {
-            // Must use object manager because a session cannot be activated before setting area
-            // @codingStandardsIgnoreStart
-            $this->objectManager->get(SessionInterface::class)
-                ->setEmergencyStopMessage($message);
-            // @codingStandardsIgnoreEnd
-
-            $this->http->setRedirect($this->url->getUrl(LockDownInterface::HTTP_LOCKDOWN_PATH));
-        }
+        $this->http->setStatusCode(LockDownInterface::HTTP_LOCKDOWN_CODE);
+        $this->http->setBody(LockDownInterface::HTTP_LOCKDOWN_BODY);
 
         return $this->http;
     }
@@ -107,18 +105,7 @@ class LockDown implements LockDownInterface
     {
         $this->actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
 
-        if ($this->getStealthMode()) {
-            $action->getResponse()->setHttpResponseCode(LockDownInterface::HTTP_LOCKDOWN_CODE);
-            $action->getResponse()->setBody(LockDownInterface::HTTP_LOCKDOWN_BODY);
-        } else {
-            // Must use object manager because a session cannot be activated before setting area
-            // @codingStandardsIgnoreStart
-            $this->objectManager->get(SessionInterface::class)
-                ->setEmergencyStopMessage($message);
-            // @codingStandardsIgnoreEnd
-
-            $url = $this->url->getUrl(LockDownInterface::HTTP_LOCKDOWN_PATH);
-            $action->getResponse()->setRedirect($url);
-        }
+        $action->getResponse()->setHttpResponseCode(LockDownInterface::HTTP_LOCKDOWN_CODE);
+        $action->getResponse()->setBody(LockDownInterface::HTTP_LOCKDOWN_BODY);
     }
 }
