@@ -25,6 +25,7 @@ use Magento\Framework\App\Action\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\View\Result\PageFactory;
 use MSP\SecuritySuiteCommon\Api\SessionInterface;
+use MSP\SecuritySuiteCommon\Api\LockDownInterface;
 
 class Index extends Action
 {
@@ -64,7 +65,7 @@ class Index extends Action
             return null;
         }
 
-        $this->getResponse()->setHttpResponseCode(500);
+        $this->getResponse()->setHttpResponseCode(LockDownInterface::HTTP_LOCKDOWN_CODE);
         $this->registry->register('msp_security_suite_reason', $reason);
         return $this->pageFactory->create();
     }
