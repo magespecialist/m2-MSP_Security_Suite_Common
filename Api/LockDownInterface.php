@@ -22,8 +22,8 @@ namespace MSP\SecuritySuiteCommon\Api;
 
 interface LockDownInterface
 {
-    const HTTP_LOCKDOWN_CODE = 500;
-    const HTTP_LOCKDOWN_BODY = '<h1>500 Internal Server Error - Security Exception</h1>';
+    const HTTP_LOCKDOWN_CODE = 403;
+    const HTTP_LOCKDOWN_BODY = '<h1>403 Forbidden</h1>';
 
     /**
      * Return true if stealth mode is enabled
