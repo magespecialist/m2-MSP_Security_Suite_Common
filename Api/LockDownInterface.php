@@ -22,15 +22,13 @@ namespace MSP\SecuritySuiteCommon\Api;
 
 interface LockDownInterface
 {
-    const XML_PATH_LOCKDOWN_MODE = 'msp_securitysuite_general/lockdown/stealth';
-
     const HTTP_LOCKDOWN_CODE = 403;
     const HTTP_LOCKDOWN_BODY = '<h1>403 Forbidden</h1>';
-    const HTTP_LOCKDOWN_PATH = 'msp_security_suite/stop/index';
 
     /**
      * Return true if stealth mode is enabled
      * @return bool
+     * @deprecated
      */
     public function getStealthMode();
 
